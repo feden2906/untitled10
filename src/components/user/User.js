@@ -8,7 +8,7 @@ export default function User({item}) {
     return (
         <Router>
         <div className="User">
-            {item.name} - <Link to={'/user/' + item.id}>User details</Link>
+            {item.name} - <Link to={'/users/' + item.id}>User details</Link>
         </div>
         </Router>
     );
