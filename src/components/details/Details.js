@@ -1,8 +1,17 @@
+import {useEffect, useState} from "react";
+import {getUser} from "../../service/Service";
 
-export default function Details() {
+export default function Details({match:{params:{id}}}) {
+    let [user,setUser] = useState({})
+
+useEffect(()=>{
+    getUser(id).then(value => setUser({...value}));
+},[id])
     return (
         <div className="Details">
-            Datails about user
+            {
+            JSON.stringify(user)
+            }
         </div>
     );
 }
