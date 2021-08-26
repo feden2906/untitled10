@@ -3,21 +3,23 @@ import {
     Link,
 
 } from "react-router-dom";
+import { getPosts, getUser } from "../../service/Service";
+import { useEffect, useState } from "react";
 
-export default function Posts({item, history}) {
+export default function Posts({ match: {params: {id}}}) {
+  let [posts, setPosts] = useState([])
 
-    const positive = () => {
-        history.push('/users/' + item.id + '/posts', item)
-    }
+  useEffect(() => {
+    getPosts(id).then(value => setPosts([...value]));
+  }, [id])
 
     return (
-        <Router>
             <div className="Posts">
                 <ul>
-                    <li>{item.title} <Link onClick={positive} to={{pathname: '/users/' + item.id + '/posts'}}>Show all
-                        info</Link></li>
+                  {
+                    posts.map(item => <li key={item.id}>{item.title} <Link to={{pathname: '/users/' + id + '/posts/' + item.id}}>Show all info</Link></li>)
+                  }
                 </ul>
             </div>
-        </Router>
     );
 }

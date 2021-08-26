@@ -18,9 +18,6 @@ export default function User({item, history}) {
         <Router>
             <div className="User">
                 {item.name} - <button onClick={navigate}>Details</button>
-                {
-                    posts.map(postsItem => <Posts key={postsItem.id} item={postsItem} history={history}/>)
-                }
             </div>
         </Router>
     );

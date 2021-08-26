@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
-import {getPosts} from "../service/Service";
+import {getPost} from "../service/Service";
 
-export default function Post({ match: {params: {id}}}) {
+export default function Post({ match: {params: {postId}}}) {
     let [post, setPost] = useState({})
     useEffect(() => {
-        getPosts(id).then(value => setPost({...value}));
-    }, [id])
+
+        getPost(postId).then(value => setPost({...value}));
+    }, [postId])
     return (
 
         <div className="Post">
